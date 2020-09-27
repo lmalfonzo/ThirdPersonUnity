@@ -2,7 +2,7 @@ Win64
 PlayerPath?
 C:/Users/Lucas boi/Desktop/Game Builds/Tests/GrowHome.exe
 SceneListBegin?
-Assets/Scenes/CameraTest.unity
+Assets/Scenes/GrowingGround.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
@@ -21,7 +21,8 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.P
 9c7c87712e298256d276eb96e02a57b1 Unity.ProBuilder.dll:UnityEngine.ProBuilder.PreferenceDictionary
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
 c9f93783db2cc1e152b36fd7461fa745 Assembly-CSharp.dll:.GrapplingGun
-a9c25f28271dfd862f401ca08144f12c Assembly-CSharp.dll:.OrbitCamera
+423aedda1f7555bb9febff1d77a2da7a Assembly-CSharp.dll:.OrbitCamera
+e70f454d3ebf6e505a6868d1144b3037 Assembly-CSharp.dll:.BowScript
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 5fc094978ce3e3591a7500ed380d854a UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -56,6 +57,7 @@ abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.Tou
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 98ad81e9f689a492509f07e75b810aaa Unity.TextMeshPro.dll:TMPro.TMP_InputField
 f6633ace6e530c0000f2ac6da4269c52 Unity.ProBuilder.dll:UnityEngine.ProBuilder.PolyShape
+4f253b61b85a92594f587906ba2e26c7 Assembly-CSharp.dll:.CustomGravityRigidBody
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 5fc094978ce3e3591a7500ed380d854a UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -121,14 +123,17 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 32f6d1d5a09e5c94c633a32edd3e6836 Unity.ProBuilder.dll:UnityEngine.ProBuilder.BezierShape
+a02a33b3bdb50b00c18f18d5033b4f69 Assembly-CSharp.dll:.GravitySphere
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
+cd5faa2ced3e398f364a010d313a40c3 Assembly-CSharp.dll:.GravityPlane
 791fc2f98a785030e4205e47b54d3d3f Assembly-CSharp.dll:.CameraCollision
 94017dcc9f00fe671ea7dc427b4da011 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
-377504a5ce6d7a26b9fb5de9c069abfe Assembly-CSharp.dll:.MovingSphere
+43e47ef2bcc6b782dc999e1da45f810c Assembly-CSharp.dll:.MovingSphere
 bac757d568f8506b0305af844eb2fa1d Assembly-CSharp.dll:.PlayerMovement
 71bb6a6b6c8f052f948db64c7dd3ca4f RadicalForge.Blockout.dll:RadicalForge.Gameplay.CameraForceDepthRender
+f483608e12af6e312acbfc356276a956 Assembly-CSharp.dll:.GravityBox
 e9389e944eb81a3a9df56fcdb09ce6a9 Unity.ProBuilder.dll:UnityEngine.ProBuilder.TriggerBehaviour
 e9389e944eb81a3a9df56fcdb09ce6a9 Unity.ProBuilder.dll:UnityEngine.ProBuilder.ColliderBehaviour
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
@@ -157,7 +162,9 @@ b8910f24ef2ac179fc92af6f6e568f82 RadicalForge.Blockout.dll:RadicalForge.Gameplay
 510fefd6a544e16a3ffefa557ddcba39 Unity.TextMeshPro.dll:TMPro.PackageResourceImporterWindow
 aa82b3ce4c0c9b227036c0337315c5d3 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e51c09a4cc447f11db225afcd8e3e490 Unity.TextMeshPro.dll:TMPro.TMP_Settings
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.GravitySource
 2a121c46a0ffd40b37fbb964a168ba98 RadicalForge.Blockout.dll:RadicalForge.Blockout.BlockoutHelper
+3ab41e93dc3b53b0d7ded7a4383b8bca Assembly-CSharp.dll:.FollowingSphere
 cf96e5f7b3d069bab453925bd41be04e UnityEngine.TestRunner.dll:UnityEngine.TestTools.EnumerableSetUpTearDownCommandState
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 259d013faac28e8ba0aa2a7542273735 UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
@@ -179,6 +186,7 @@ d78de8440afb7f8c81273a3cb3dcc1da RadicalForge.Blockout.dll:RadicalForge.Blockout
 e654edd02032e8acfd7aa02e51989869 RadicalForge.Blockout.Editor.dll:RadicalForge.Blockout.ThemeDefinition
 5fc094978ce3e3591a7500ed380d854a Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+3f4d12e726cb2b57fafadc84fcf40584 Assembly-CSharp.dll:.DudeAnimator
 e8208321307adbf48c8369afdba61583 RadicalForge.Blockout.dll:RadicalForge.Gameplay.RotateObject
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 6bbc110f263b38ad315b2e8845492b7d Assembly-CSharp.dll:.PlayerMovementScript
@@ -187,5 +195,6 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 d7b65a50a71ac38ddc257fc626a054fd RadicalForge.Blockout.dll:RadicalForge.Blockout.BlockoutSceneViewCubeGizmo
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.CustomGravity
 2ba3cd071d30242d6f08cfee2b8726a7 RadicalForge.Blockout.dll:RadicalForge.Blockout.BlockoutSceneSettings
 854446dc5c6ad197d3c6b30778b7d65e RadicalForge.Blockout.dll:RadicalForge.Gameplay.Collectable

@@ -14,7 +14,7 @@ public class BowScript : MonoBehaviour
 
     //TODO: make serialized
     [SerializeField]
-    Transform spawn;
+    public Transform spawn;
 
     [SerializeField]
     Transform player;

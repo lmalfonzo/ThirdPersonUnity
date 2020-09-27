@@ -89,6 +89,8 @@ public class MovingSphere: MonoBehaviour
 
     Vector3 contactNormal, steepNormal, climbNormal, lastClimbNormal;
 
+    public Vector3 lastContactNormal;
+
     int stepsSinceLastGrounded, stepsSinceLastJump, stepsSinceTouchedGround;
 
     float secsSinceLastDash, secsSinceLastLaunch, launchTime;
@@ -307,6 +309,7 @@ public class MovingSphere: MonoBehaviour
      */
     void ClearState()
     {
+        lastContactNormal = contactNormal;
         groundContactCount = steepContactCount = climbContactCount = 0 ;
         contactNormal = steepNormal = climbNormal = connectionVelocity =  Vector3.zero;
         previousConnectedBody = connectedBody;

@@ -286,18 +286,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1804770665}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &213421961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 213421960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6546169c96f416347b31ff3c2dc70c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &213421962 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1465024789, guid: 6c0d205193378ec4586561812ef69087,
@@ -535,7 +523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 29373854c85c4374e9ff5689b6024ae9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.465
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 29373854c85c4374e9ff5689b6024ae9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -677,6 +665,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1025345626}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &311931713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6590700357504763232, guid: 4a4e049981a658e4bbeefdb09a01a491,
+    type: 3}
+  m_PrefabInstance: {fileID: 1025345626}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311931712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd1d461f29ec0b4db3a7a239c803732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &311931716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3477,6 +3477,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1241384318}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1268246089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100070, guid: 29373854c85c4374e9ff5689b6024ae9,
+    type: 3}
+  m_PrefabInstance: {fileID: 231254979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1268246092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268246089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6546169c96f416347b31ff3c2dc70c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraSight: {fileID: 311931713}
 --- !u!1 &1268703846
 GameObject:
   m_ObjectHideFlags: 0
@@ -5094,6 +5113,18 @@ PrefabInstance:
       propertyPath: launchTarget
       value: 
       objectReference: {fileID: 635760088}
+    - target: {fileID: 1465024789, guid: 6c0d205193378ec4586561812ef69087, type: 3}
+      propertyPath: maxClimbSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465024789, guid: 6c0d205193378ec4586561812ef69087, type: 3}
+      propertyPath: maxAirAcceleration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465024789, guid: 6c0d205193378ec4586561812ef69087, type: 3}
+      propertyPath: maxSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 220056988, guid: 6c0d205193378ec4586561812ef69087, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
