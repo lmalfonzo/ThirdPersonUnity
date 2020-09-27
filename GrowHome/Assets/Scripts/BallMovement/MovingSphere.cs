@@ -122,6 +122,7 @@ public class MovingSphere: MonoBehaviour
      */
     void Awake()
     {
+        Application.targetFrameRate = 145;
         body = GetComponent<Rigidbody>();
         body.useGravity = false;
         meshRenderer = GetComponent<MeshRenderer>();
