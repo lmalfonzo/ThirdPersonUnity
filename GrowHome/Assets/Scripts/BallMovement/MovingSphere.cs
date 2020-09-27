@@ -18,7 +18,7 @@ using UnityEngine;
 public class MovingSphere: MonoBehaviour
 {
     [SerializeField, Range (0f, 100f)]
-    float maxSpeed = 10f, maxClimbSpeed = 2f;
+    public float maxSpeed = 10f, maxClimbSpeed = 2f;
 
     [SerializeField, Range(0f, 100f)]
     float maxAcceleration = 10, maxAirAcceleration = 1f, maxClimbAcceleration = 20f;
@@ -73,11 +73,11 @@ public class MovingSphere: MonoBehaviour
 
     int groundContactCount, steepContactCount, climbContactCount;
 
-    bool OnGround => groundContactCount > 0;
+    public bool OnGround => groundContactCount > 0;
 
     bool OnSteep => steepContactCount > 0;
 
-    bool Climbing => climbContactCount > 0 && stepsSinceLastJump > 2;
+    public bool Climbing => climbContactCount > 0 && stepsSinceLastJump > 2;
 
     bool stoppedPlayerInput;
 

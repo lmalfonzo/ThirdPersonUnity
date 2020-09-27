@@ -12,11 +12,20 @@ public class BowScript : MonoBehaviour
     [SerializeField, Min(10f)] // to change
     float chargeRate;
 
-    public Transform spawn;
-    public Transform player;
-    public Rigidbody arrowObject;
+    //TODO: make serialized
+    [SerializeField]
+    Transform spawn;
 
-    public KeyCode fireButton;
+    [SerializeField]
+    Transform player;
+
+    [SerializeField]
+    Rigidbody arrowObject;
+
+    public Vector3 firingPosition;
+
+    [SerializeField]
+    KeyCode fireButton;
 
     void Update()
     {
@@ -26,19 +35,21 @@ public class BowScript : MonoBehaviour
             Debug.Log(currentCharge.ToString());
         }
 
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward * 100f, out hit, 100f))
+        {
+            spawn.LookAt(hit.point);
+            firingPosition = hit.point;
+        }
+        else
+        {
+            firingPosition = transform.position + transform.forward.normalized * 100f;
+            spawn.LookAt(firingPosition);
+        }
+
         if (Input.GetKeyUp(fireButton))
         {
             Rigidbody arrow = Instantiate(arrowObject, spawn.position, Quaternion.identity) as Rigidbody;
-
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward * 100f, out hit, 100f))
-            {
-                spawn.LookAt(hit.point);
-            } else
-            {
-                var pos = transform.position + transform.forward.normalized * 100f;
-                spawn.LookAt(pos);
-            }
 
             arrow.AddForce(spawn.forward * currentCharge, ForceMode.Impulse);
             currentCharge = 0;
