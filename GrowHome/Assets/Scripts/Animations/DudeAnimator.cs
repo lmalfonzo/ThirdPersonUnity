@@ -10,7 +10,6 @@ public class DudeAnimator : MonoBehaviour
     [SerializeField]
     OrbitCamera cameraSight;
 
-
     float speedPercent;
     BowScript sight;
 
@@ -18,6 +17,7 @@ public class DudeAnimator : MonoBehaviour
     float distance;
 
     Quaternion previousLookRotation;
+    Quaternion previousClimbRotation;
 
     MeshRenderer meshRenderer;
 
@@ -29,38 +29,32 @@ public class DudeAnimator : MonoBehaviour
         sight = cameraSight.GetComponent<BowScript>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
+        transform.up = sphere.lastContactNormal; //set normal to current normal
         speedPercent = 0f;
-        if (sphere.OnGround)
-        {
-            speedPercent = .25f;
-            if (rb.velocity.sqrMagnitude < 0.01f)
-            {
-                speedPercent = 0f;
-            }
 
-        }
-        else if (sphere.Climbing)
+        speedPercent = sphere.OnGround ? .25f : .75f;
+
+        if (rb.velocity.sqrMagnitude < 0.01f)
         {
-            speedPercent = .5f;
+            speedPercent = 0f;
+            transform.localRotation = previousLookRotation;
         }
         else
         {
-            speedPercent = .75f;
+            previousLookRotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+            previousLookRotation.x = 0;
+            previousLookRotation.z = 0;
+            transform.localRotation = previousLookRotation;
+        }
+
+        if (sphere.Climbing) //we need to face towards the normal here for animations to look good
+        {
+            transform.forward = -sphere.lastContactNormal;
+            speedPercent = .5f;
         }
         animator.SetFloat("speedPercent", speedPercent, .1f, Time.deltaTime);
-        if (rb.velocity.sqrMagnitude < 0.001f)
-        {
-            transform.localRotation = previousLookRotation;
-        } else
-        {
-            previousLookRotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
-            transform.localRotation = previousLookRotation;
-        }
-        //transform.LookAt(sight.firingPosition);
-
     }
 
 }
