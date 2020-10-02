@@ -517,6 +517,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerGFX
       objectReference: {fileID: 0}
+    - target: {fileID: 100070, guid: 29373854c85c4374e9ff5689b6024ae9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 29373854c85c4374e9ff5689b6024ae9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1074,6 +1078,75 @@ Transform:
   m_Father: {fileID: 1099373610}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &478763191
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1441006263}
+    m_Modifications:
+    - target: {fileID: 100070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_Name
+      value: new_dudeSolov2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 940be004d115db54ba509432f36df68f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 53c99e70bc539c74d958ae9d72460533, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 940be004d115db54ba509432f36df68f, type: 3}
 --- !u!1001 &519883548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4972,6 +5045,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736687252}
   m_CullTransparentMesh: 0
+--- !u!1 &1763466068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100070, guid: 940be004d115db54ba509432f36df68f,
+    type: 3}
+  m_PrefabInstance: {fileID: 478763191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1763466070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763466068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6546169c96f416347b31ff3c2dc70c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraSight: {fileID: 311931713}
 --- !u!1 &1768978241
 GameObject:
   m_ObjectHideFlags: 0

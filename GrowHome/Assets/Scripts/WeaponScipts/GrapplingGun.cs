@@ -11,6 +11,8 @@ public class GrapplingGun : MonoBehaviour
     public float maxDistance = 50f;
     private SpringJoint joint;
 
+    public bool isGrappling;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,6 +28,7 @@ public class GrapplingGun : MonoBehaviour
         }
 
         if (Input.GetMouseButtonUp(0)) {
+            isGrappling = false;
             EndGrapple();
         }
 
@@ -59,6 +62,7 @@ public class GrapplingGun : MonoBehaviour
             joint.massScale = 4.5f;
 
             lr.positionCount = 2;
+            isGrappling = true;
         }
 
     }

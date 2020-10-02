@@ -21,20 +21,30 @@ public class DudeAnimator : MonoBehaviour
 
     MeshRenderer meshRenderer;
 
+    GrapplingGun ggun;
+
+
     void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
         animator = GetComponent<Animator>();
         sphere = GetComponentInParent<MovingSphere>();
         sight = cameraSight.GetComponent<BowScript>();
+        ggun = GetComponentInParent<GrapplingGun>();
+    }
+
+    void UpdateState()
+    {
+        animator.SetBool("OnGround", sphere.OnGround);
+        animator.SetBool("Climbing", sphere.Climbing);
+        animator.SetBool("Grappling", ggun.isGrappling);
     }
 
     void LateUpdate()
     {
-        transform.up = sphere.lastContactNormal; //set normal to current normal
-        speedPercent = 0f;
+        UpdateState();
 
-        speedPercent = sphere.OnGround ? .25f : .75f;
+        transform.up = sphere.lastContactNormal; //set normal to current normal
 
         if (rb.velocity.sqrMagnitude < 0.01f)
         {
@@ -43,6 +53,7 @@ public class DudeAnimator : MonoBehaviour
         }
         else
         {
+            speedPercent = 1f;
             previousLookRotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
             previousLookRotation.x = 0;
             previousLookRotation.z = 0;
@@ -51,8 +62,12 @@ public class DudeAnimator : MonoBehaviour
 
         if (sphere.Climbing) //we need to face towards the normal here for animations to look good
         {
+            speedPercent = 0f;
             transform.forward = -sphere.lastContactNormal;
-            speedPercent = .5f;
+            if (rb.velocity.sqrMagnitude < 0.01f)
+            {
+                speedPercent = 1f;
+            }
         }
         animator.SetFloat("speedPercent", speedPercent, .1f, Time.deltaTime);
     }
