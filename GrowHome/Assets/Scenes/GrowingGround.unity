@@ -412,6 +412,8 @@ MonoBehaviour:
   camera: {fileID: 1538368196}
   player: {fileID: 1441006263}
   maxDistance: 50
+  isGrappling: 0
+  grappleNormal: {x: 0, y: 0, z: 0}
 --- !u!1001 &227681438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -551,7 +553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 29373854c85c4374e9ff5689b6024ae9, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 29373854c85c4374e9ff5689b6024ae9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -782,6 +784,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 13400000, guid: e11eb9eecb7c44f4c80ccbd7fbd21b3c,
         type: 2}
+    - target: {fileID: 64832889779055128, guid: d7e938173698d924aa7ffccddcd87fa0,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7e938173698d924aa7ffccddcd87fa0, type: 3}
 --- !u!1 &382573167
@@ -947,6 +954,8 @@ MonoBehaviour:
   camera: {fileID: 1538368196}
   player: {fileID: 417545995}
   maxDistance: 50
+  isGrappling: 0
+  grappleNormal: {x: 0, y: 0, z: 0}
 --- !u!120 &417545988
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1123,7 +1132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 940be004d115db54ba509432f36df68f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1332,6 +1341,12 @@ Transform:
   m_Father: {fileID: 1214589216}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 60.201004, z: 0}
+--- !u!4 &571717626 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400040, guid: 29373854c85c4374e9ff5689b6024ae9,
+    type: 3}
+  m_PrefabInstance: {fileID: 231254979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &586378689
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,12 +2145,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900284105}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.5000001, y: -0.49999997, z: 0.49999997, w: 0.49999997}
+  m_LocalPosition: {x: -0.01142, y: -0.001, z: 0.0004}
+  m_LocalScale: {x: 0.009999999, y: 0.009999998, z: 0.00887404}
   m_Children: []
-  m_Father: {fileID: 1441006263}
-  m_RootOrder: 1
+  m_Father: {fileID: 571717626}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &931072307
 GameObject:
@@ -3343,6 +3358,8 @@ MonoBehaviour:
   camera: {fileID: 1966305738}
   player: {fileID: 1099373610}
   maxDistance: 100
+  isGrappling: 0
+  grappleNormal: {x: 0, y: 0, z: 0}
 --- !u!120 &1215693228
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -4203,6 +4220,8 @@ MonoBehaviour:
   camera: {fileID: 1538368196}
   player: {fileID: 1540198903}
   maxDistance: 50
+  isGrappling: 0
+  grappleNormal: {x: 0, y: 0, z: 0}
 --- !u!120 &1540198896
 LineRenderer:
   m_ObjectHideFlags: 0

@@ -23,7 +23,6 @@ public class DudeAnimator : MonoBehaviour
 
     GrapplingGun ggun;
 
-
     void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
@@ -46,7 +45,7 @@ public class DudeAnimator : MonoBehaviour
 
         transform.up = sphere.lastContactNormal; //set normal to current normal
 
-        if (rb.velocity.sqrMagnitude < 0.01f)
+        if (rb.velocity.sqrMagnitude < 0.01f || checkLateralMagnitude(rb.velocity))
         {
             speedPercent = 0f;
             transform.localRotation = previousLookRotation;
@@ -62,14 +61,29 @@ public class DudeAnimator : MonoBehaviour
 
         if (sphere.Climbing) //we need to face towards the normal here for animations to look good
         {
-            speedPercent = 0f;
+            
             transform.forward = -sphere.lastContactNormal;
+            speedPercent = rb.velocity.sqrMagnitude < 0.01f ? 1f : 0f;
+            /*
             if (rb.velocity.sqrMagnitude < 0.01f)
             {
                 speedPercent = 1f;
+            } else
+            {
+                speedPercent = 0f;
             }
+            */
+        } else if (ggun.isGrappling)
+        {
+            // rotate towards grappling hook direction
+            transform.localRotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
         }
         animator.SetFloat("speedPercent", speedPercent, .1f, Time.deltaTime);
+    }
+
+    private bool checkLateralMagnitude(Vector3 velocity)
+    {
+        return velocity.x < 0.01f && velocity.x > -0.01f && velocity.z < 0.01f && velocity.z > -0.01f;
     }
 
 }

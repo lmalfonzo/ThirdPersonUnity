@@ -12,6 +12,8 @@ public class GrapplingGun : MonoBehaviour
     private SpringJoint joint;
 
     public bool isGrappling;
+    public Vector3 grappleNormal;
+    RaycastHit hit;
 
     // Start is called before the first frame update
     void Awake()
@@ -41,7 +43,6 @@ public class GrapplingGun : MonoBehaviour
 
     void StartGrapple()
     {
-        RaycastHit hit;
 
         if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, grappelable))
         {
@@ -63,6 +64,7 @@ public class GrapplingGun : MonoBehaviour
 
             lr.positionCount = 2;
             isGrappling = true;
+            grappleNormal = hit.normal;
         }
 
     }
