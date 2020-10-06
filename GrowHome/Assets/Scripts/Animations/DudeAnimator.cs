@@ -24,6 +24,7 @@ public class DudeAnimator : MonoBehaviour
     GrapplingGun ggun;
 
     Vector2 lastPlayerInput;
+    Vector3 lastVelocity;
 
     void Start()
     {
@@ -60,12 +61,24 @@ public class DudeAnimator : MonoBehaviour
             previousLookRotation.z = 0;
             transform.localRotation = previousLookRotation;
 
+            if (sphere.OnGround) {
+
+                float velocityDelta = lastVelocity.magnitude - rb.velocity.magnitude;
+                print(velocityDelta);
+                if (velocityDelta > .4f)
+                {
+                    animator.SetBool("Skrrt", true);
+                } else
+                {
+                    animator.SetBool("Skrrt", false);
+                }
+            }
+            /*
             Vector2 inputDiffernece = lastPlayerInput + sphere.playerInput;
-            print(inputDiffernece.magnitude);
-            
+            print(sphere.playerInput);
             if (sphere.OnGround && inputDiffernece.magnitude < 0.5f && sphere.playerInput != Vector2.zero && lastPlayerInput != Vector2.zero)
-            {
-                animator.SetBool("Skrrt", true);
+            { 
+                animator.SetBool("Skrrt", true);  
             } else
             {
                 animator.SetBool("Skrrt", false);
@@ -95,6 +108,8 @@ public class DudeAnimator : MonoBehaviour
         }
         animator.SetFloat("speedPercent", speedPercent, .1f, Time.deltaTime);
 
+        //TODO put in a ClearState 
+        lastVelocity = rb.velocity;
         lastPlayerInput = sphere.playerInput;
     }
 

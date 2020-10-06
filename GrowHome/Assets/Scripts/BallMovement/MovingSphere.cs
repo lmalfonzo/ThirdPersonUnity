@@ -79,7 +79,7 @@ public class MovingSphere: MonoBehaviour
 
     public bool Climbing => climbContactCount > 0 && stepsSinceLastJump > 2;
 
-    bool stoppedPlayerInput;
+    public bool stoppedPlayerInput;
 
     bool desiresDash, inDash, desiresLaunch;
 
