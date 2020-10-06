@@ -23,6 +23,8 @@ public class DudeAnimator : MonoBehaviour
 
     GrapplingGun ggun;
 
+    Vector2 lastPlayerInput;
+
     void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
@@ -57,6 +59,27 @@ public class DudeAnimator : MonoBehaviour
             previousLookRotation.x = 0;
             previousLookRotation.z = 0;
             transform.localRotation = previousLookRotation;
+
+            Vector2 inputDiffernece = lastPlayerInput + sphere.playerInput;
+            print(inputDiffernece.magnitude);
+            
+            if (sphere.OnGround && inputDiffernece.magnitude < 0.5f && sphere.playerInput != Vector2.zero && lastPlayerInput != Vector2.zero)
+            {
+                animator.SetBool("Skrrt", true);
+            } else
+            {
+                animator.SetBool("Skrrt", false);
+            }
+            /*
+            if (sphere.OnGround && rb.velocity.magnitude < sphere.maxSpeed-1)
+            {
+                animator.SetBool("Skrrt", true);
+            } else
+            {
+                animator.SetBool("Skrrt", false);
+            }
+            */
+
         }
 
         if (sphere.Climbing) //we need to face towards the normal here for animations to look good
@@ -64,21 +87,15 @@ public class DudeAnimator : MonoBehaviour
             
             transform.forward = -sphere.lastContactNormal;
             speedPercent = rb.velocity.sqrMagnitude < 0.01f ? 1f : 0f;
-            /*
-            if (rb.velocity.sqrMagnitude < 0.01f)
-            {
-                speedPercent = 1f;
-            } else
-            {
-                speedPercent = 0f;
-            }
-            */
+
         } else if (ggun.isGrappling)
         {
             // rotate towards grappling hook direction
             transform.localRotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
         }
         animator.SetFloat("speedPercent", speedPercent, .1f, Time.deltaTime);
+
+        lastPlayerInput = sphere.playerInput;
     }
 
     private bool checkLateralMagnitude(Vector3 velocity)

@@ -101,7 +101,7 @@ public class MovingSphere: MonoBehaviour
 
     MeshRenderer meshRenderer;
 
-    Vector2 playerInput;
+    public Vector2 playerInput;
 
     int bunnyHopString;
 
@@ -158,7 +158,6 @@ public class MovingSphere: MonoBehaviour
         desiresLaunch |= Input.GetKeyDown(KeyCode.P); //TODO
 
         meshRenderer.material = Climbing ? climbingMaterial : normalMaterial;
-
     }
 
     /*
