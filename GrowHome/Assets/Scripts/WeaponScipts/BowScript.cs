@@ -40,6 +40,11 @@ public class BowScript : MonoBehaviour
         {
             spawn.LookAt(hit.point);
             firingPosition = hit.point;
+            if (hit.transform.name.Contains("Branch"))
+            {
+                MaterialChanger mat = hit.transform.GetComponent<MaterialChanger>();
+                mat.SwitchMaterial(1);
+            }
         }
         else
         {
@@ -54,5 +59,7 @@ public class BowScript : MonoBehaviour
             arrow.AddForce(spawn.forward * currentCharge, ForceMode.Impulse);
             currentCharge = 0;
         }
+
+
     }
 }

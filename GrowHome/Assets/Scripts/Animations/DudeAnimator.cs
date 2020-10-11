@@ -64,7 +64,7 @@ public class DudeAnimator : MonoBehaviour
             if (sphere.OnGround) {
 
                 float velocityDelta = lastVelocity.magnitude - rb.velocity.magnitude;
-                print(velocityDelta);
+
                 if (velocityDelta > .4f)
                 {
                     animator.SetBool("Skrrt", true);

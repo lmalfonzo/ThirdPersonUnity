@@ -4,24 +4,46 @@ using UnityEngine;
 
 public class MaterialChanger : MonoBehaviour
 {
-
     public Material[] materials;
 
-    public int size;
+    public int index;
+
+    bool isTargeted;
 
     Renderer rend;
     // Start is called before the first frame update
     void Start()
     {
-        size = 0;
+        index = 0;
         rend = GetComponent<Renderer>();
         rend.enabled = true;
-        rend.sharedMaterial = materials[size];
+        rend.sharedMaterial = materials[index];
+        isTargeted = false;
     }
 
-    void OnValidate() //TODO find out how to trigger this on boxcast (and untrigger this on boxcast out)
+    void Update() //TODO find out how to trigger this on boxcast (and untrigger this on boxcast out)
     {
-        rend.sharedMaterial = materials[size];
+        index = isTargeted ? index : 0;
+
+        rend.sharedMaterial = materials[index];
+
+        isTargeted = false;
+    }
+
+    public void SwitchMaterial(int index)
+    {
+        /*
+        if (materials.Length > 1)
+        {
+            index++;
+            if (index > materials.Length)
+            {
+                index = 0;
+            }
+        }
+        */
+        this.index = index;
+        isTargeted = true;
     }
 
 }
