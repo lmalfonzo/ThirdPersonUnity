@@ -25,6 +25,9 @@ public class BowScript : MonoBehaviour
     public Vector3 firingPosition;
 
     [SerializeField]
+    LayerMask BranchMask;
+
+    [SerializeField]
     KeyCode fireButton;
 
     void Update()
@@ -35,15 +38,15 @@ public class BowScript : MonoBehaviour
             Debug.Log(currentCharge.ToString());
         }
 
+        //TODO move this too a different script
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward * 100f, out hit, 100f))
+        if (Physics.SphereCast(transform.position, 6f, transform.forward, out hit, 100f, BranchMask))
         {
-            spawn.LookAt(hit.point);
-            firingPosition = hit.point;
+            Debug.DrawLine(transform.position, hit.point, Color.green);
             if (hit.transform.name.Contains("Branch"))
             {
                 MaterialChanger mat = hit.transform.GetComponent<MaterialChanger>();
-                mat.SwitchMaterial(1);
+                mat.SwitchMaterial(1); //TODO make enums
             }
         }
         else
@@ -54,6 +57,11 @@ public class BowScript : MonoBehaviour
 
         if (Input.GetKeyUp(fireButton))
         {
+            if (Physics.Raycast(transform.position, transform.forward * 100f, out hit, 100f))
+            {
+                spawn.LookAt(hit.point);
+                firingPosition = hit.point;
+            }
             Rigidbody arrow = Instantiate(arrowObject, spawn.position, Quaternion.identity) as Rigidbody;
 
             arrow.AddForce(spawn.forward * currentCharge, ForceMode.Impulse);
