@@ -30,6 +30,13 @@ public class BowScript : MonoBehaviour
     [SerializeField]
     KeyCode fireButton;
 
+    MovingSphere sphere;
+
+    void Start()
+    {
+        sphere = GetComponentInParent<MovingSphere>();
+    }
+
     void Update()
     {
         if (Input.GetKey(fireButton) && currentCharge < maxCharge)
@@ -39,6 +46,7 @@ public class BowScript : MonoBehaviour
         }
 
         //TODO move this too a different script
+        //TODO make this easier to read
         RaycastHit hit;
         if (Physics.SphereCast(transform.position, 6f, transform.forward, out hit, 100f, BranchMask))
         {
@@ -47,6 +55,7 @@ public class BowScript : MonoBehaviour
             {
                 MaterialChanger mat = hit.transform.GetComponent<MaterialChanger>();
                 mat.SwitchMaterial(1); //TODO make enums
+                sphere.launchTarget = hit.transform.GetComponentInChildren<Transform>();
             }
         }
         else
