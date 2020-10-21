@@ -108,7 +108,7 @@ public class MovingSphere: MonoBehaviour
 
     int bunnyHopString;
 
-    public Transform launchTarget;
+    public Vector3 launchTarget;
 
     
 
@@ -255,13 +255,21 @@ public class MovingSphere: MonoBehaviour
 
         if (secsSinceLastLaunch > launchTime) // or for any movement action that needs no player input
         {
-            body.velocity = velocity;
+            if (secsSinceLastLaunch - launchTime < .1f)
+            {
+                body.velocity = Vector3.zero;
+            } else
+            {
+                body.velocity = velocity;
+            } 
         }
         
         if (secsSinceLastDash > 0.2f && inDash)
         {
             body.useGravity = true;
-            if (!Input.GetMouseButton(0)) { body.velocity /= 2; } //TODO: dont apply this while grappling
+            if (!Input.GetMouseButton(0)) {
+                body.velocity /= 2;
+            } //TODO: dont apply this while grappling
             inDash = false;
         }
 
@@ -298,10 +306,10 @@ public class MovingSphere: MonoBehaviour
     {
         secsSinceLastLaunch = 0;
         //assumes negative gravity
-        print("TargetPOS: " + launchTarget.position + "Ball Pos: " + transform.position);
-        float displacementY = launchTarget.position.y - transform.position.y;
+        //print("TargetPOS: " + launchTarget + "Ball Pos: " + transform.position);
+        float displacementY = launchTarget.y - transform.position.y;
         float h = displacementY + launchOffset;
-        Vector3 displacementXZ = new Vector3(launchTarget.position.x - transform.position.x, 0, launchTarget.position.z - transform.position.z);
+        Vector3 displacementXZ = new Vector3(launchTarget.x - transform.position.x, 0, launchTarget.z - transform.position.z);
         launchTime = (Mathf.Sqrt(-2 * h / Physics.gravity.y) + Mathf.Sqrt(2 * (displacementY - h) / Physics.gravity.y));
         Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * Physics.gravity.y * h);
         Vector3 velocityXZ = displacementXZ / launchTime;
@@ -365,7 +373,6 @@ public class MovingSphere: MonoBehaviour
             bunnyHopString++;
 
         }
-        
 
         velocity += jumpDirection * jumpSpeed;
 

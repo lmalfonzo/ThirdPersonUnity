@@ -42,7 +42,6 @@ public class BowScript : MonoBehaviour
         if (Input.GetKey(fireButton) && currentCharge < maxCharge)
         {
             currentCharge += chargeRate * Time.deltaTime; // this should mean consistent charge rates but needs testing
-            Debug.Log(currentCharge.ToString());
         }
 
         //TODO move this too a different script
@@ -51,12 +50,7 @@ public class BowScript : MonoBehaviour
         if (Physics.SphereCast(transform.position, 6f, transform.forward, out hit, 100f, BranchMask))
         {
             Debug.DrawLine(transform.position, hit.point, Color.green);
-            if (hit.transform.name.Contains("Branch"))
-            {
-                MaterialChanger mat = hit.transform.GetComponent<MaterialChanger>();
-                mat.SwitchMaterial(1); //TODO make enums
-                sphere.launchTarget = hit.transform.GetComponentInChildren<Transform>();
-            }
+            ChangeLaunchTarget(hit);
         }
         else
         {
@@ -77,6 +71,13 @@ public class BowScript : MonoBehaviour
             currentCharge = 0;
         }
 
+    }
 
+    void ChangeLaunchTarget(RaycastHit hit)
+    {
+        MaterialChanger mat = hit.transform.GetComponent<MaterialChanger>();
+        mat.SwitchMaterial(1); //TODO make enums
+        BoxCollider col = hit.transform.GetComponent<BoxCollider>();
+        sphere.launchTarget = hit.transform.position + new Vector3(0, col.size.y);
     }
 }
