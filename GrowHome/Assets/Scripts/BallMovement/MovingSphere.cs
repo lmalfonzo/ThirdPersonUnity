@@ -68,6 +68,9 @@ public class MovingSphere: MonoBehaviour
     [SerializeField, Min(5f)]
     float launchOffset;
 
+    [SerializeField]
+    GrapplingGun gg;
+
     Vector3 velocity, connectionVelocity;
 
     Rigidbody body, connectedBody, previousConnectedBody;
@@ -94,7 +97,7 @@ public class MovingSphere: MonoBehaviour
 
     public Vector3 lastContactNormal;
 
-    int stepsSinceLastGrounded, stepsSinceLastJump, stepsSinceTouchedGround;
+    int stepsSinceLastGrounded, stepsSinceLastJump, stepsSinceTouchedGround, stepsSinceLastGrapple;
 
     float secsSinceLastDash, secsSinceLastLaunch, launchTime;
 
@@ -160,7 +163,7 @@ public class MovingSphere: MonoBehaviour
         desiredJump |= Input.GetButtonDown("Jump");
         desiresClimbing = Input.GetButton("Climb");
         desiresDash |= Input.GetKeyDown(dashButton);
-        desiresLaunch |= Input.GetKeyDown(KeyCode.P); //TODO
+        desiresLaunch |= Input.GetKeyDown(KeyCode.P);
 
         meshRenderer.material = Climbing ? climbingMaterial : normalMaterial;
     }
@@ -253,9 +256,9 @@ public class MovingSphere: MonoBehaviour
             desiresLaunch = false;
         }
 
-        if (secsSinceLastLaunch > launchTime) // or for any movement action that needs no player input
+        if (secsSinceLastLaunch > launchTime) // we are curently in the launch, set no velocity until it finishes
         {
-            if (secsSinceLastLaunch - launchTime < .1f)
+            if (secsSinceLastLaunch - launchTime < .1f) 
             {
                 body.velocity = Vector3.zero;
             } else
@@ -269,8 +272,26 @@ public class MovingSphere: MonoBehaviour
             body.useGravity = true;
             if (!Input.GetMouseButton(0)) {
                 body.velocity /= 2;
-            } //TODO: dont apply this while grappling
+            } 
             inDash = false;
+        }
+
+        if (gg.isGrappling)
+        {
+            stepsSinceLastGrapple += 1;
+            if (stepsSinceLastGrapple < 2 && !gg.isUnderGrapplePoint())
+            {
+                maxAirAcceleration *= 4f * (gg.radius/gg.maxDistance);
+                body.velocity = Vector3.zero;
+
+            }
+            Debug.Log("MS: " + gg.isUnderGrapplePoint());
+            
+        } else if (!gg.isGrappling && stepsSinceLastGrapple > 1)
+        {
+            stepsSinceLastGrapple = 0;
+            maxAirAcceleration *= .25f / (gg.radius / gg.maxDistance);
+
         }
 
         ClearState();
@@ -278,8 +299,6 @@ public class MovingSphere: MonoBehaviour
 
     /*
      * Launches the player from their current position to the specified launch position
-     * 
-     * //TODO: make launch position pickable by the player
      */
     void LaunchToTarget()
     {
@@ -294,7 +313,6 @@ public class MovingSphere: MonoBehaviour
             body.useGravity = true;
         } else
         {
-            Debug.Log("outie");
             launchTime = 0f;
         }
     }
@@ -305,8 +323,7 @@ public class MovingSphere: MonoBehaviour
     Vector3 CalculateLaunchVelocity()
     {
         secsSinceLastLaunch = 0;
-        //assumes negative gravity
-        //print("TargetPOS: " + launchTarget + "Ball Pos: " + transform.position);
+
         float displacementY = launchTarget.y - transform.position.y;
         float h = displacementY + launchOffset;
         Vector3 displacementXZ = new Vector3(launchTarget.x - transform.position.x, 0, launchTarget.z - transform.position.z);

@@ -9,11 +9,16 @@ public class GrapplingGun : MonoBehaviour
     public LayerMask grappelable;
     public Transform gunTip, camera, player;
     public float maxDistance = 50f;
+    public float radius;
     private SpringJoint joint;
+    public float angleBetweenAnchor;
 
     public bool isGrappling;
     public Vector3 grappleNormal;
     RaycastHit hit;
+
+    [SerializeField]
+    MovingSphere sphere;
 
     // Start is called before the first frame update
     void Awake()
@@ -48,13 +53,14 @@ public class GrapplingGun : MonoBehaviour
         {
             grapplePoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();
+            joint.enableCollision = true;
             joint.autoConfigureConnectedAnchor = false; //see what happens if this is true
             joint.connectedAnchor = grapplePoint;
 
-            float distanceToGrapplePoint = Vector3.Distance(player.position, grapplePoint);
+            radius = Vector3.Distance(player.position, grapplePoint); 
 
-            joint.maxDistance = distanceToGrapplePoint * 0.8f; //make these editable
-            joint.minDistance = distanceToGrapplePoint * 0.2f;
+            joint.maxDistance = radius * 0.8f; //make these editable
+            joint.minDistance = radius * 0.2f;
 
 
             //TODO customize these and see what they do 
@@ -80,6 +86,26 @@ public class GrapplingGun : MonoBehaviour
     {
         lr.positionCount = 0;
         Destroy(joint);
+    }
+
+    public bool isUnderGrapplePoint()
+    {
+        float playerx = player.position.x;
+        float playerz = player.position.z;
+        Vector2 playerPos = new Vector2(playerx, playerz);
+
+        float gPointx = grapplePoint.x;
+        float gPointz = grapplePoint.z;
+        Vector2 gPointPos = new Vector2(gPointx, gPointz);
+
+        Vector2 diff = playerPos - gPointPos;
+
+        if (diff.magnitude < 10f && player.position.y < grapplePoint.y)
+        {
+            Debug.Log(diff.magnitude);
+            return true;
+        }
+        return false;
     }
 }
     

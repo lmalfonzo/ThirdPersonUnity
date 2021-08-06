@@ -414,6 +414,7 @@ MonoBehaviour:
   maxDistance: 50
   isGrappling: 0
   grappleNormal: {x: 0, y: 0, z: 0}
+  sphere: {fileID: 213421962}
 --- !u!1001 &227681438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -965,6 +966,7 @@ MonoBehaviour:
   maxDistance: 50
   isGrappling: 0
   grappleNormal: {x: 0, y: 0, z: 0}
+  sphere: {fileID: 0}
 --- !u!120 &417545988
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -3486,6 +3488,7 @@ MonoBehaviour:
   maxDistance: 100
   isGrappling: 0
   grappleNormal: {x: 0, y: 0, z: 0}
+  sphere: {fileID: 0}
 --- !u!120 &1215693228
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -4348,6 +4351,7 @@ MonoBehaviour:
   maxDistance: 50
   isGrappling: 0
   grappleNormal: {x: 0, y: 0, z: 0}
+  sphere: {fileID: 0}
 --- !u!120 &1540198896
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5527,16 +5531,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 9.448607
       objectReference: {fileID: 0}
-    - target: {fileID: 635760089, guid: b00ed3ed973d6454dae73c8158183621, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4705658160795059300, guid: b00ed3ed973d6454dae73c8158183621,
         type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: a1466bce17f325d47b0333c9f1981112,
         type: 2}
+    - target: {fileID: 635760089, guid: b00ed3ed973d6454dae73c8158183621, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b00ed3ed973d6454dae73c8158183621, type: 3}
 --- !u!1001 &1804770665
@@ -5602,6 +5606,10 @@ PrefabInstance:
       propertyPath: launchOffset
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1465024789, guid: 6c0d205193378ec4586561812ef69087, type: 3}
+      propertyPath: gg
+      value: 
+      objectReference: {fileID: 213421968}
     - target: {fileID: 220056988, guid: 6c0d205193378ec4586561812ef69087, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
